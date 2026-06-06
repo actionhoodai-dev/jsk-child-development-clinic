@@ -79,6 +79,23 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Social Media Links */}
+        <div className="footer-social">
+          <h3>Follow Us</h3>
+          <div className="footer-social-icons">
+            <a
+              href="https://www.instagram.com/jskchild_development/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="Follow us on Instagram"
+            >
+              <i className="fab fa-instagram"></i>
+              <span>@jskchild_development</span>
+            </a>
+          </div>
+        </div>
+
         {/* Footer Bottom copyright banner */}
         <div className="footer-bottom">
           <p>&copy; {currentYear} JSK Child Development & Physiotherapy Center. All rights reserved.</p>
