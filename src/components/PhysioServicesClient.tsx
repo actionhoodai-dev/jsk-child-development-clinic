@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Reveal from '@/components/Reveal';
 
 interface PhysioCondition {
@@ -9,6 +10,7 @@ interface PhysioCondition {
   titleTa: string;
   descriptionEn: string;
   descriptionTa: string;
+  image: string;
   svgIcon: React.ReactNode;
 }
 
@@ -19,8 +21,9 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'கழுத்து வலி & சர்விகல் ஸ்பான்டிலோசிஸ்',
     descriptionEn: 'Traction, posture corrections, and manual therapy to relieve cervical nerve compression.',
     descriptionTa: 'கழுத்து நரம்பு அழுத்தத்தை போக்க தசை நீட்சி, சீரமைப்பு மற்றும் உடற்பயிற்சி சிகிச்சை.',
+    image: '/assets/neck_traction.png',
     svgIcon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2C8.13 2 5 5.13 5 9C5 12.38 7.39 15.2 10.58 15.82C9.5 17.5 8 18.5 8 20V22H16V20C16 18.5 14.5 17.5 13.42 15.82C16.61 15.2 19 12.38 19 9C19 5.13 15.87 2 12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         <circle cx="12" cy="9" r="3" stroke="var(--accent-orange)" strokeWidth="2" />
         <path d="M12 15V19" stroke="var(--accent-orange)" strokeWidth="2" strokeDasharray="2 2" />
@@ -33,8 +36,9 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'முதுகு வலி & சியாட்டிகா',
     descriptionEn: 'Core stabilization and spinal decompression exercise protocols to ease lumbar nerve pain.',
     descriptionTa: 'இடுப்பு நரம்பு அழுத்தத்தை போக்க உடற்பயிற்சி மற்றும் தண்டுவட தளர்வு சிகிச்சை.',
+    image: '/assets/spine_decompression.png',
     svgIcon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 3V21M7 5H17M7 9H17M7 13H17M7 17H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         <path d="M12 9L15 11M12 13L9 15" stroke="var(--accent-orange)" strokeWidth="2" strokeLinecap="round" />
         <circle cx="12" cy="13" r="2" fill="var(--accent-orange)" />
@@ -47,8 +51,9 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'மூட்டு வலி & வாத நோய்',
     descriptionEn: 'Gentle mobilization drills to reduce swelling and recover your knee and hip flexibility.',
     descriptionTa: 'மூட்டு வீக்கம் மற்றும் வலியைக் குறைக்க எளிய அசைவு பயிற்சிகள் மற்றும் சிகிச்சை.',
+    image: '/assets/joint_mobilization.png',
     svgIcon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M5 5C5 5 8 2 12 2C16 2 19 5 19 5M5 19C5 19 8 22 12 22C16 22 19 19 19 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         <circle cx="12" cy="12" r="4" stroke="var(--accent-orange)" strokeWidth="2" />
         <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" strokeWidth="2" />
@@ -61,8 +66,9 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'பக்கவாத மறுவாழ்வு',
     descriptionEn: 'Neuro-facilitation and motor relearning protocols to restore control over affected limbs.',
     descriptionTa: 'பக்கவாதத்தால் பாதிக்கப்பட்ட கை, கால் இயக்கங்களை மீண்டும் பெற நரம்பியல் உடற்பயிற்சி சிகிச்சை.',
+    image: '/assets/stroke_neuro_rehab.png',
     svgIcon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M9.5 2C9.5 2 12 4.5 12 7C12 9.5 9.5 12 9.5 12M14.5 2C14.5 2 12 4.5 12 7C12 9.5 14.5 12 14.5 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         <path d="M12 12V22" stroke="currentColor" strokeWidth="2" />
         <path d="M6 16C6 16 9 17 12 17C15 17 18 16 18 16" stroke="var(--accent-orange)" strokeWidth="2" strokeLinecap="round" />
@@ -75,8 +81,9 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'விளையாட்டு காயங்கள் & தசை பிடிப்பு',
     descriptionEn: 'Rapid recovery plans for ankle sprains, tennis elbow, and soft tissue ligament injuries.',
     descriptionTa: 'விளையாடும் போது ஏற்படும் தசை பிடிப்புகள், சுளுக்குகள் மற்றும் ஜவ்வு கிழிதல்களுக்கான விரைவான தீர்வு.',
+    image: '/assets/sports_injury_rehab.png',
     svgIcon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M13 5L19 11M5 13L11 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         <path d="M4 20L20 4" stroke="var(--accent-orange)" strokeWidth="2" strokeLinecap="round" />
         <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
@@ -89,8 +96,9 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'தோள்பட்டை வலி & உறைந்த தோள்பட்டை',
     descriptionEn: 'Gradual passive movement schedules to restore full shoulder range of motion.',
     descriptionTa: 'தோள்பட்டை இயக்கத்தை முழுமையாக மீட்டெடுக்க படிப்படியான உடற்பயிற்சி சிகிச்சை.',
+    image: '/assets/shoulder_rehab.png',
     svgIcon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
         <path d="M12 3C12 3 9 7 9 12C9 17 12 21 12 21" stroke="var(--accent-orange)" strokeWidth="2" />
         <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" strokeWidth="2" />
@@ -103,8 +111,9 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'அறுவை சிகிச்சைக்கு பிந்தைய மறுவாழ்வு',
     descriptionEn: 'Guided therapies following fracture settings, knee replacements, and tendon repairs.',
     descriptionTa: 'எலும்பு முறிவு, மூட்டு மாற்று மற்றும் தசைநார் அறுவை சிகிச்சைக்கு பிந்தைய உடற்பயிற்சிகள்.',
+    image: '/assets/post_surgery.png',
     svgIcon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 3V21M3 12H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         <path d="M7 7L17 17M17 7L7 17" stroke="var(--accent-orange)" strokeWidth="2" strokeLinecap="round" />
       </svg>
@@ -116,8 +125,9 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'செரிப்ரல் பால்சி & நரம்பியல் மறுவாழ்வு',
     descriptionEn: 'Neurodevelopmental Therapy (NDT) to optimize muscle coordination and motor actions.',
     descriptionTa: 'தசை இயக்கம் மற்றும் கட்டுப்பாட்டை மேம்படுத்த நரம்பியல் வளர்ச்சி சிகிச்சை.',
+    image: '/assets/neuro_rehab.png',
     svgIcon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         <path d="M12 6V18M8 10H16M9 14H15" stroke="var(--accent-orange)" strokeWidth="2" strokeLinecap="round" />
       </svg>
@@ -129,8 +139,9 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'முதியோர் இயக்கம் & தடுமாற்ற தடுப்பு',
     descriptionEn: 'Balance and strength training for senior citizens to restore safety and walking confidence.',
     descriptionTa: 'முதியவர்கள் பாதுகாப்பாகவும் நம்பிக்கையுடனும் நடக்க சமநிலை மற்றும் பலப்படுத்தும் பயிற்சிகள்.',
+    image: '/assets/geriatric_mobility.png',
     svgIcon: (
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C16.97 21 21 16.97 21 12" stroke="currentColor" strokeWidth="2" />
         <circle cx="12" cy="12" r="3" fill="var(--accent-orange)" />
         <path d="M12 15L15 18M12 15L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -229,7 +240,7 @@ export default function PhysioServicesClient() {
           {isMobile && (
             <div style={{
               textAlign: 'center',
-              marginBottom: '15px',
+              marginBottom: '25px',
               fontSize: '0.85rem',
               color: 'var(--text-muted)',
               display: 'flex',
@@ -255,21 +266,34 @@ export default function PhysioServicesClient() {
             {CONDITIONS_DATA.map((cond, index) => {
               const cardContent = (
                 <div 
-                  className={`physio-card ${isPaused ? 'is-paused' : ''}`} 
+                  className={`physio-card card-has-image ${isPaused ? 'is-paused' : ''}`} 
                   onClick={handleCardClick}
                   style={{ cursor: isMobile ? 'pointer' : 'default' }}
                 >
-                  <div className="physio-icon-container">{cond.svgIcon}</div>
-                  <h3 style={{ fontSize: '1.2rem', marginBottom: '12px' }}>
-                    <span className="lang-en">{cond.titleEn}</span>
-                    <span className="lang-ta">{cond.titleTa}</span>
-                  </h3>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: 0 }}>
-                    {cond.descriptionEn}
-                  </p>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--primary-teal)', fontWeight: '600', marginTop: '8px', marginBottom: 0 }}>
-                    {cond.descriptionTa}
-                  </p>
+                  <div className="physio-card-image-wrapper">
+                    <Image
+                      src={cond.image}
+                      alt={cond.titleEn}
+                      fill
+                      sizes="(max-width: 768px) 85vw, 30vw"
+                      className="physio-card-img"
+                    />
+                    <div className="physio-card-icon-overlay">
+                      {cond.svgIcon}
+                    </div>
+                  </div>
+                  <div className="physio-card-info" style={{ padding: '25px' }}>
+                    <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', color: 'var(--contrast-navy)' }}>
+                      <span className="lang-en" style={{ display: 'block', fontWeight: '700' }}>{cond.titleEn}</span>
+                      <span className="lang-ta" style={{ display: 'block', fontSize: '0.95rem', marginTop: '4px', color: 'var(--primary-purple)' }}>{cond.titleTa}</span>
+                    </h3>
+                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: 0, lineHeight: '1.5' }}>
+                      {cond.descriptionEn}
+                    </p>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--primary-teal)', fontWeight: '600', marginTop: '10px', marginBottom: 0, lineHeight: '1.5' }}>
+                      {cond.descriptionTa}
+                    </p>
+                  </div>
                 </div>
               );
 
