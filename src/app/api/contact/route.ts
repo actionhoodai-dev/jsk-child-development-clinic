@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     // Send email to JSK business email
     const { data, error } = await resend.emails.send({
       from: 'JSK Clinic Website <onboarding@resend.dev>',
-      to: ['jskrehabcenter@gmail.com'],
+      to: ['jskrehab@gmail.com'],
       subject: `New Appointment Request — ${service} — ${name}`,
       html: `
         <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
