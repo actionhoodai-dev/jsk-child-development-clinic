@@ -93,7 +93,7 @@ export default function Home() {
           <div className="grid-4">
             <Reveal direction="up" delay={0}>
               <div style={{ padding: '10px' }}>
-                <StatCounter targetNumber={10} suffix="+ Years" />
+                <StatCounter targetNumber={15} suffix="+ Years" />
                 <div style={{ fontWeight: '700', textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '0.5px', marginTop: '5px', color: '#ffffff' }}>
                   Clinical Experience
                 </div>
@@ -101,7 +101,7 @@ export default function Home() {
             </Reveal>
             <Reveal direction="up" delay={100}>
               <div style={{ padding: '10px' }}>
-                <StatCounter targetNumber={5000} suffix="+" />
+                <StatCounter targetNumber={500} suffix="+" />
                 <div style={{ fontWeight: '700', textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '0.5px', marginTop: '5px', color: '#ffffff' }}>
                   Happy Families Helped
                 </div>

@@ -152,8 +152,13 @@ const CONDITIONS_DATA: PhysioCondition[] = [
 
 export default function PhysioServicesClient() {
   const [isMobile, setIsMobile] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Split conditions into chunks of 3
+  const chunkedData: PhysioCondition[][] = [];
+  for (let i = 0; i < CONDITIONS_DATA.length; i += 3) {
+    chunkedData.push(CONDITIONS_DATA.slice(i, i + 3));
+  }
 
   useEffect(() => {
     const checkMobile = () => {
@@ -164,48 +169,69 @@ export default function PhysioServicesClient() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  useEffect(() => {
-    if (!isMobile || isPaused) return;
+  const [activeIndices, setActiveIndices] = useState<Record<number, number>>({
+    0: 0,
+    1: 0,
+    2: 0,
+  });
 
-    const interval = setInterval(() => {
-      const container = containerRef.current;
-      if (!container) return;
+  const scrollRow = (rowIndex: number, direction: 'left' | 'right') => {
+    const container = rowRefs.current[rowIndex];
+    if (!container) return;
 
-      const card = container.querySelector('.physio-card');
-      if (!card) return;
+    const card = container.querySelector('.physio-card') as HTMLElement;
+    if (!card) return;
 
-      const cardWidth = card.clientWidth;
-      const gap = 20; // grid-gap on mobile
-      const step = cardWidth + gap;
+    const cardWidth = card.clientWidth;
+    const gap = 16;
+    const step = cardWidth + gap;
 
-      const maxScrollLeft = container.scrollWidth - container.clientWidth;
-      let nextScrollLeft = container.scrollLeft + step;
+    const newScroll = direction === 'right'
+      ? container.scrollLeft + step
+      : container.scrollLeft - step;
 
-      // Wrap around with 10px threshold
-      if (nextScrollLeft >= maxScrollLeft - 5) {
-        nextScrollLeft = 0;
-      }
-
-      container.scrollTo({
-        left: nextScrollLeft,
-        behavior: 'smooth',
-      });
-    }, 3200);
-
-    return () => clearInterval(interval);
-  }, [isMobile, isPaused]);
-
-  const handleCardClick = () => {
-    if (!isMobile) return;
-    setIsPaused((prev) => !prev);
+    container.scrollTo({
+      left: newScroll,
+      behavior: 'smooth',
+    });
   };
 
-  const handleScroll = () => {
-    if (!isMobile) return;
-    // If user swipes manually while it is paused, resume automatic rotation
-    if (isPaused) {
-      setIsPaused(false);
-    }
+  const scrollToCard = (rowIndex: number, cardIndex: number) => {
+    const container = rowRefs.current[rowIndex];
+    if (!container) return;
+
+    const card = container.querySelector('.physio-card') as HTMLElement;
+    if (!card) return;
+
+    const cardWidth = card.clientWidth;
+    const gap = 16;
+    const step = cardWidth + gap;
+
+    container.scrollTo({
+      left: cardIndex * step,
+      behavior: 'smooth',
+    });
+  };
+
+  const handleRowScroll = (rowIndex: number) => {
+    const container = rowRefs.current[rowIndex];
+    if (!container) return;
+
+    const scrollLeft = container.scrollLeft;
+    const card = container.querySelector('.physio-card') as HTMLElement;
+    if (!card) return;
+
+    const cardWidth = card.clientWidth;
+    const gap = 16;
+    const step = cardWidth + gap;
+
+    const index = Math.round(scrollLeft / step);
+    const clampedIndex = Math.max(0, Math.min(2, index));
+
+    setActiveIndices((prev) => {
+      if (prev[rowIndex] === clampedIndex) return prev;
+      return { ...prev, [rowIndex]: clampedIndex };
+    });
   };
 
   return (
@@ -236,78 +262,124 @@ export default function PhysioServicesClient() {
             </Reveal>
           </div>
 
-          {/* Interactive State Indicator for Mobile View */}
-          {isMobile && (
-            <div style={{
-              textAlign: 'center',
-              marginBottom: '25px',
-              fontSize: '0.85rem',
-              color: 'var(--text-muted)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px'
-            }}>
-              <span className={`pulse-dot ${isPaused ? 'paused' : 'playing'}`}></span>
-              <span>
-                {isPaused 
-                  ? 'Autoscroll Paused. Tap a card or swipe to resume.' 
-                  : 'Autoscrolling. Tap a card to pause intake notes.'}
-              </span>
+          {/* Desktop: full 3-column grid */}
+          {!isMobile && (
+            <div className="physio-grid">
+              {CONDITIONS_DATA.map((cond, index) => (
+                <Reveal key={cond.id} direction="up" delay={index * 50}>
+                  <div className="physio-card card-has-image">
+                    <div className="physio-card-image-wrapper">
+                      <Image
+                        src={cond.image}
+                        alt={cond.titleEn}
+                        fill
+                        sizes="30vw"
+                        className="physio-card-img"
+                      />
+                      <div className="physio-card-icon-overlay">
+                        {cond.svgIcon}
+                      </div>
+                    </div>
+                    <div className="physio-card-info" style={{ padding: '25px' }}>
+                      <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', color: 'var(--contrast-navy)' }}>
+                        <span className="lang-en" style={{ display: 'block', fontWeight: '700' }}>{cond.titleEn}</span>
+                        <span className="lang-ta" style={{ display: 'block', fontSize: '0.95rem', marginTop: '4px', color: 'var(--primary-purple)' }}>{cond.titleTa}</span>
+                      </h3>
+                      <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: 0, lineHeight: '1.5' }}>
+                        {cond.descriptionEn}
+                      </p>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--primary-teal)', fontWeight: '600', marginTop: '10px', marginBottom: 0, lineHeight: '1.5' }}>
+                        {cond.descriptionTa}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           )}
 
-          {/* Grid Layout or Horizontal Autoplay Carousel on Mobile */}
-          <div 
-            ref={containerRef}
-            className={`physio-grid ${isMobile ? 'carousel-mobile' : ''}`}
-            onScroll={handleScroll}
-          >
-            {CONDITIONS_DATA.map((cond, index) => {
-              const cardContent = (
-                <div 
-                  className={`physio-card card-has-image ${isPaused ? 'is-paused' : ''}`} 
-                  onClick={handleCardClick}
-                  style={{ cursor: isMobile ? 'pointer' : 'default' }}
-                >
-                  <div className="physio-card-image-wrapper">
-                    <Image
-                      src={cond.image}
-                      alt={cond.titleEn}
-                      fill
-                      sizes="(max-width: 768px) 85vw, 30vw"
-                      className="physio-card-img"
-                    />
-                    <div className="physio-card-icon-overlay">
-                      {cond.svgIcon}
-                    </div>
-                  </div>
-                  <div className="physio-card-info" style={{ padding: '25px' }}>
-                    <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', color: 'var(--contrast-navy)' }}>
-                      <span className="lang-en" style={{ display: 'block', fontWeight: '700' }}>{cond.titleEn}</span>
-                      <span className="lang-ta" style={{ display: 'block', fontSize: '0.95rem', marginTop: '4px', color: 'var(--primary-purple)' }}>{cond.titleTa}</span>
-                    </h3>
-                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: 0, lineHeight: '1.5' }}>
-                      {cond.descriptionEn}
-                    </p>
-                    <p style={{ fontSize: '0.85rem', color: 'var(--primary-teal)', fontWeight: '600', marginTop: '10px', marginBottom: 0, lineHeight: '1.5' }}>
-                      {cond.descriptionTa}
-                    </p>
-                  </div>
-                </div>
-              );
+          {/* Mobile: rows of 3 cards, each row with left/right arrow navigation */}
+          {isMobile && (
+            <div className="physio-rows-mobile">
+              {chunkedData.map((row, rowIndex) => (
+                <div key={rowIndex} className="physio-row-section">
+                  <div className="physio-row-nav-wrapper">
+                    {/* Left Arrow */}
+                    <button
+                      className="physio-nav-arrow physio-nav-arrow-left"
+                      onClick={() => scrollRow(rowIndex, 'left')}
+                      aria-label="Previous card"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
 
-              return isMobile ? (
-                <div key={cond.id} className="carousel-slide-wrapper">
-                  {cardContent}
+                    {/* Scrollable row */}
+                    <div
+                      ref={(el) => { rowRefs.current[rowIndex] = el; }}
+                      className="physio-grid carousel-mobile"
+                      onScroll={() => handleRowScroll(rowIndex)}
+                    >
+                      {row.map((cond) => (
+                        <div key={cond.id} className="carousel-slide-wrapper">
+                          <div className="physio-card card-has-image">
+                            <div className="physio-card-image-wrapper">
+                              <Image
+                                src={cond.image}
+                                alt={cond.titleEn}
+                                fill
+                                sizes="85vw"
+                                className="physio-card-img"
+                              />
+                              <div className="physio-card-icon-overlay">
+                                {cond.svgIcon}
+                              </div>
+                            </div>
+                            <div className="physio-card-info" style={{ padding: '20px' }}>
+                              <h3 style={{ fontSize: '1.15rem', marginBottom: '10px', color: 'var(--contrast-navy)' }}>
+                                <span className="lang-en" style={{ display: 'block', fontWeight: '700' }}>{cond.titleEn}</span>
+                                <span className="lang-ta" style={{ display: 'block', fontSize: '0.9rem', marginTop: '4px', color: 'var(--primary-purple)' }}>{cond.titleTa}</span>
+                              </h3>
+                              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: 0, lineHeight: '1.5' }}>
+                                {cond.descriptionEn}
+                              </p>
+                              <p style={{ fontSize: '0.8rem', color: 'var(--primary-teal)', fontWeight: '600', marginTop: '8px', marginBottom: 0, lineHeight: '1.5' }}>
+                                {cond.descriptionTa}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Right Arrow */}
+                    <button
+                      className="physio-nav-arrow physio-nav-arrow-right"
+                      onClick={() => scrollRow(rowIndex, 'right')}
+                      aria-label="Next card"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Dot indicators */}
+                  <div className="physio-row-dots">
+                    {row.map((_, i) => (
+                      <span
+                        key={i}
+                        className={`physio-dot ${activeIndices[rowIndex] === i ? 'active' : ''}`}
+                        onClick={() => scrollToCard(rowIndex, i)}
+                        style={{ cursor: 'pointer' }}
+                      ></span>
+                    ))}
+                  </div>
                 </div>
-              ) : (
-                <Reveal key={cond.id} direction="up" delay={index * 50}>
-                  {cardContent}
-                </Reveal>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
