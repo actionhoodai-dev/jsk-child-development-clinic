@@ -16,7 +16,7 @@ export default function About() {
           <Reveal direction="fade">
             <h1 style={{ color: '#ffffff', marginBottom: '10px' }}>About Our Center</h1>
             <p style={{ color: 'rgba(250, 250, 248, 0.85)', margin: 0, fontSize: '1.25rem' }}>
-              The Story, Philosophy, and Milestones of JSK Rehab Center
+              Evidence-Based Pediatric & Adult Rehabilitation in Karaikudi
             </p>
           </Reveal>
         </div>
@@ -154,74 +154,120 @@ export default function About() {
         </div>
       </section>
 
-      {/* Clinic Timeline */}
+      {/* Clinical Approach & Care Model */}
       <section className="section section-white">
         <div className="container">
-          <div className="text-center" style={{ marginBottom: '50px' }}>
+          <div className="text-center" style={{ marginBottom: '55px' }}>
             <Reveal direction="up">
-              <h2>Our Timeline & Milestones</h2>
+              <h2>Our Clinical Care Model</h2>
             </Reveal>
             <Reveal direction="up" delay={150}>
-              <p style={{ maxWidth: '600px', margin: '0 auto' }}>
-                How JSK grew from a localized physiotherapy practice to Karaikudi's foremost pediatric rehabilitation landmark.
+              <p style={{ maxWidth: '750px', margin: '0 auto' }}>
+                JSK Center is built upon modern patient care frameworks that combine multidisciplinary collaboration, parent integration, and specialized therapeutic environments.
               </p>
             </Reveal>
           </div>
 
-          {/* Timeline Node Chain */}
-          <div className="timeline">
-            {/* Year 1 */}
-            <div className="timeline-item timeline-left">
-              <Reveal direction="left">
-                <div className="timeline-content">
-                  <div className="timeline-year">2016</div>
-                  <h4>Clinic Foundation</h4>
-                  <p style={{ fontSize: '0.9rem', marginBottom: 0 }}>
-                    JSK started as a specialized orthopaedic physiotherapy center in Karaikudi, focusing on back pain, neck pain, and post-surgery recovery.
-                  </p>
+          <div className="grid-2" style={{ gap: '30px', margin: '0 auto', maxWidth: '1100px' }}>
+            <Reveal direction="left">
+              <div style={{
+                backgroundColor: '#ffffff',
+                padding: '35px',
+                borderRadius: '8px',
+                border: '1px solid var(--border-gray)',
+                borderLeft: '5px solid var(--primary-teal)',
+                height: '100%'
+              }}>
+                <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                  <i className="fas fa-users" style={{ fontSize: '1.8rem', color: 'var(--primary-teal)', marginTop: '5px' }}></i>
+                  <div>
+                    <h3 style={{ fontSize: '1.25rem', color: 'var(--contrast-navy)', marginBottom: '10px' }}>Multidisciplinary Synergy</h3>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: 0 }}>
+                      Unlike standard clinic setups where therapists practice in isolation, our pediatric panel (occupational, speech, and behavior therapists) conducts structured, joint file reviews. This collaborative synergy ensures that every child's physical, speech, and sensory milestones are aligned and mutually reinforced.
+                    </p>
+                  </div>
                 </div>
-              </Reveal>
-            </div>
+              </div>
+            </Reveal>
 
-            {/* Year 2 */}
-            <div className="timeline-item timeline-right">
-              <Reveal direction="right">
-                <div className="timeline-content">
-                  <div className="timeline-year">2018</div>
-                  <h4>Early Intervention Launch</h4>
-                  <p style={{ fontSize: '0.9rem', marginBottom: 0 }}>
-                    Identified a strong regional demand for expert developmental support. Launched occupational and speech therapies for children with Autism and ADHD.
-                  </p>
+            <Reveal direction="right">
+              <div style={{
+                backgroundColor: '#ffffff',
+                padding: '35px',
+                borderRadius: '8px',
+                border: '1px solid var(--border-gray)',
+                borderLeft: '5px solid var(--primary-purple)',
+                height: '100%'
+              }}>
+                <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                  <i className="fas fa-house-chimney-user" style={{ fontSize: '1.8rem', color: 'var(--primary-purple)', marginTop: '5px' }}></i>
+                  <div>
+                    <h3 style={{ fontSize: '1.25rem', color: 'var(--contrast-navy)', marginBottom: '10px' }}>Home-Transition Support</h3>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: 0 }}>
+                      We recognize that 1–2 clinical sessions a week are only the foundation. Lasting developmental progress happens in the child's daily environment. We run a dedicated parent coaching program, providing families with practical home action plans, milestone tracking sheets, and structured exercises.
+                    </p>
+                  </div>
                 </div>
-              </Reveal>
-            </div>
+              </div>
+            </Reveal>
 
-            {/* Year 3 */}
-            <div className="timeline-item timeline-left">
-              <Reveal direction="left">
-                <div className="timeline-content">
-                  <div className="timeline-year">2021</div>
-                  <h4>Advanced Canadian Protocols</h4>
-                  <p style={{ fontSize: '0.9rem', marginBottom: 0 }}>
-                    Our founder completed specialized pediatric and spinal training in Canada, introducing state-of-the-art neurological exercises to the clinic.
-                  </p>
+            <Reveal direction="left">
+              <div style={{
+                backgroundColor: '#ffffff',
+                padding: '35px',
+                borderRadius: '8px',
+                border: '1px solid var(--border-gray)',
+                borderLeft: '5px solid var(--accent-orange)',
+                height: '100%'
+              }}>
+                <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                  <i className="fas fa-cubes-stacked" style={{ fontSize: '1.8rem', color: 'var(--accent-orange)', marginTop: '5px' }}></i>
+                  <div>
+                    <h3 style={{ fontSize: '1.25rem', color: 'var(--contrast-navy)', marginBottom: '10px' }}>Distraction-Free Spaces</h3>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: 0 }}>
+                      Our clinical environment is custom-designed to optimize focus. Speech-language rooms are acoustically isolated to eliminate sensory overload. The sensory integration gyms are structured to feel like safe play areas while systematically challenging and building balance, motor planning, and coordination.
+                    </p>
+                  </div>
                 </div>
-              </Reveal>
-            </div>
+              </div>
+            </Reveal>
 
-            {/* Year 4 */}
-            <div className="timeline-item timeline-right">
-              <Reveal direction="right">
-                <div className="timeline-content">
-                  <div className="timeline-year">2024</div>
-                  <h4>Integrated Rehabilitation Center</h4>
-                  <p style={{ fontSize: '0.9rem', marginBottom: 0 }}>
-                    Relocated to our current flagship facility at Chekkalai, featuring dedicated speech therapy rooms, a sensory integration gym, and a pediatric physical therapy center.
-                  </p>
+            <Reveal direction="right">
+              <div style={{
+                backgroundColor: '#ffffff',
+                padding: '35px',
+                borderRadius: '8px',
+                border: '1px solid var(--border-gray)',
+                borderLeft: '5px solid var(--primary-teal)',
+                height: '100%'
+              }}>
+                <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+                  <i className="fas fa-chart-line" style={{ fontSize: '1.8rem', color: 'var(--primary-teal)', marginTop: '5px' }}></i>
+                  <div>
+                    <h3 style={{ fontSize: '1.25rem', color: 'var(--contrast-navy)', marginBottom: '10px' }}>Measurable Progression</h3>
+                    <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: 0 }}>
+                      Therapy at JSK is entirely objective. We implement standardized assessment metrics (such as range-of-motion angles, coordination scores, and speech clarity scales). Every milestone is documented clearly, giving parents and adult patients transparent visibility into actual functional improvements.
+                    </p>
+                  </div>
                 </div>
-              </Reveal>
-            </div>
+              </div>
+            </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* Motto & Vision Statement */}
+      <section className="section section-teal text-center" style={{ padding: '80px 0', borderTop: '5px solid var(--accent-orange)' }}>
+        <div className="container">
+          <Reveal direction="fade">
+            <h3 style={{ textTransform: 'uppercase', letterSpacing: '2px', fontSize: '1.1rem', color: 'var(--accent-orange)', marginBottom: '15px' }}>Our Core Motto</h3>
+            <h2 style={{ fontSize: '3rem', fontWeight: '800', color: '#ffffff', fontStyle: 'italic', margin: '0 0 20px 0', fontFamily: 'var(--font-headings)' }}>
+              "small steps big progress"
+            </h2>
+            <p style={{ maxWidth: '750px', margin: '0 auto', color: 'rgba(250, 250, 248, 0.85)', fontSize: '1.15rem', lineHeight: '1.6' }}>
+              We believe that physical recovery and developmental milestones are not won in giant leaps, but through consistent, focused effort. By valuing every single success in movement, speech, and coordination, we build the momentum for life-changing long-term progress.
+            </p>
+          </Reveal>
         </div>
       </section>
     </div>
