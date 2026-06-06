@@ -57,8 +57,31 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <nav className="nav-menu desktop-only">
+          <nav className="nav-menu desktop-only" style={{ height: '100%' }}>
             {NAV_LINKS.map((link) => {
+              if (link.href === '/child-services') {
+                const isActive = pathname.startsWith('/child-services');
+                return (
+                  <div key={link.href} className="nav-dropdown-container">
+                    <Link
+                      href={link.href}
+                      className={`nav-link ${isActive ? 'active' : ''}`}
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                    >
+                      {link.label}
+                      <i className="fas fa-chevron-down" style={{ fontSize: '0.75rem', marginTop: '2px' }}></i>
+                    </Link>
+                    <div className="nav-dropdown-menu">
+                      <Link href="/child-services/speech-therapy" className="dropdown-item">Speech Therapy</Link>
+                      <Link href="/child-services/occupational-therapy" className="dropdown-item">Occupational Therapy</Link>
+                      <Link href="/child-services/special-ed" className="dropdown-item">Special Education</Link>
+                      <Link href="/child-services/behaviour-therapy" className="dropdown-item">Behaviour Therapy</Link>
+                      <Link href="/child-services/child-psychology" className="dropdown-item">Child Psychology</Link>
+                      <Link href="/child-services/pediatric-physio" className="dropdown-item">Pediatric Physiotherapy</Link>
+                    </div>
+                  </div>
+                );
+              }
               const isActive = pathname === link.href;
               return (
                 <Link

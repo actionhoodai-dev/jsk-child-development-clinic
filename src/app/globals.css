@@ -1457,3 +1457,55 @@ header.scrolled .logo-img {
     transform: translateX(200%);
   }
 }
+
+/* ==========================================================================
+   NAVIGATION DROPDOWN MENU (DESKTOP)
+   ========================================================================== */
+.nav-dropdown-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: #ffffff;
+  min-width: 250px;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(10, 22, 40, 0.15);
+  border: 1px solid var(--border-gray);
+  border-top: 4px solid var(--accent-orange);
+  padding: 12px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1000;
+}
+
+/* Hover activates dropdown */
+.nav-dropdown-container:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 12px 24px;
+  color: var(--contrast-navy);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.dropdown-item:hover {
+  background-color: var(--light-gray);
+  color: var(--primary-teal);
+  padding-left: 28px;
+}
