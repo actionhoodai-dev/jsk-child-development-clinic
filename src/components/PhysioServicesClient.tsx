@@ -96,7 +96,7 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'தோள்பட்டை வலி & உறைந்த தோள்பட்டை',
     descriptionEn: 'Gradual passive movement schedules to restore full shoulder range of motion.',
     descriptionTa: 'தோள்பட்டை இயக்கத்தை முழுமையாக மீட்டெடுக்க படிப்படியான உடற்பயிற்சி சிகிச்சை.',
-    image: '/assets/shoulder_rehab.png',
+    image: '/assets/shoulder_rehab.jpg',
     svgIcon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
@@ -111,7 +111,7 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'அறுவை சிகிச்சைக்கு பிந்தைய மறுவாழ்வு',
     descriptionEn: 'Guided therapies following fracture settings, knee replacements, and tendon repairs.',
     descriptionTa: 'எலும்பு முறிவு, மூட்டு மாற்று மற்றும் தசைநார் அறுவை சிகிச்சைக்கு பிந்தைய உடற்பயிற்சிகள்.',
-    image: '/assets/post_surgery.png',
+    image: '/assets/post_surgery.jpg',
     svgIcon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 3V21M3 12H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -125,7 +125,7 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'செரிப்ரல் பால்சி & நரம்பியல் மறுவாழ்வு',
     descriptionEn: 'Neurodevelopmental Therapy (NDT) to optimize muscle coordination and motor actions.',
     descriptionTa: 'தசை இயக்கம் மற்றும் கட்டுப்பாட்டை மேம்படுத்த நரம்பியல் வளர்ச்சி சிகிச்சை.',
-    image: '/assets/neuro_rehab.png',
+    image: '/assets/neuro_rehab.jpg',
     svgIcon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -139,7 +139,7 @@ const CONDITIONS_DATA: PhysioCondition[] = [
     titleTa: 'முதியோர் இயக்கம் & தடுமாற்ற தடுப்பு',
     descriptionEn: 'Balance and strength training for senior citizens to restore safety and walking confidence.',
     descriptionTa: 'முதியவர்கள் பாதுகாப்பாகவும் நம்பிக்கையுடனும் நடக்க சமநிலை மற்றும் பலப்படுத்தும் பயிற்சிகள்.',
-    image: '/assets/geriatric_mobility.png',
+    image: '/assets/geriatric_mobility.jpg',
     svgIcon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C16.97 21 21 16.97 21 12" stroke="currentColor" strokeWidth="2" />
