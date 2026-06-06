@@ -255,7 +255,7 @@ export default function ChildServices() {
                   alt={selectedService.title}
                   fill
                   className="card-img"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', objectPosition: 'top' }}
                 />
                 <div style={{
                   position: 'absolute',
