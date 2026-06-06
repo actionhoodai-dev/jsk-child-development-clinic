@@ -984,7 +984,7 @@ header.scrolled .logo-img {
   font-size: 0.95rem;
   color: rgba(250, 250, 248, 0.7);
   position: relative;
-  padding-left: 15px;
+  padding-left: 22px;
 }
 
 .footer-links a::before {
@@ -996,7 +996,7 @@ header.scrolled .logo-img {
 
 .footer-links a:hover {
   color: #ffffff;
-  padding-left: 20px;
+  padding-left: 28px;
 }
 
 .footer-contact p {
