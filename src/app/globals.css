@@ -1170,3 +1170,84 @@ header.scrolled .logo-img {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   MOBILE PHYSIO CAROUSEL & AUTO-ROTATION
+   ========================================================================== */
+@media (max-width: 768px) {
+  .physio-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .physio-grid.carousel-mobile {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 20px !important;
+    padding: 15px 10px 25px !important;
+    scrollbar-width: none !important;
+  }
+  
+  .physio-grid.carousel-mobile::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  .carousel-slide-wrapper {
+    flex: 0 0 85% !important;
+    min-width: 270px !important;
+    scroll-snap-align: center !important;
+  }
+  
+  .physio-card {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .physio-card.is-paused {
+    border-color: var(--accent-orange) !important;
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* Pulsing state indicators */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.pulse-dot.playing {
+  background-color: var(--primary-teal);
+  animation: pulse-green-glow 1.8s infinite;
+}
+
+.pulse-dot.paused {
+  background-color: var(--accent-orange);
+  animation: pulse-orange-glow 1.8s infinite;
+}
+
+@keyframes pulse-green-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(13, 115, 119, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(13, 115, 119, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 115, 119, 0);
+  }
+}
+
+@keyframes pulse-orange-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(245, 166, 35, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 166, 35, 0);
+  }
+}
