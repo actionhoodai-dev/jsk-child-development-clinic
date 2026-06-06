@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import SmoothScroll from '@/components/SmoothScroll';
+import PageTransitionLoader from '@/components/PageTransitionLoader';
 
 // Configure Google Fonts for native layout shift-free loading
 const playfair = Playfair_Display({
@@ -60,6 +61,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        {/* Global Page Transition & Initial Splash Loader */}
+        <PageTransitionLoader />
+
         {/* Enable smooth inertial scrolling */}
         <SmoothScroll />
 

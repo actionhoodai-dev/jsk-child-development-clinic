@@ -1371,3 +1371,89 @@ header.scrolled .logo-img {
     box-shadow: 0 0 0 0 rgba(245, 166, 35, 0);
   }
 }
+
+/* ==========================================================================
+   PAGE TRANSITION LOADER
+   ========================================================================== */
+.transition-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.transition-loader-overlay.loading {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.transition-loader-overlay.exiting {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.transition-loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.transition-logo-wrapper {
+  animation: logo-entrance-pulse 2s infinite ease-in-out;
+}
+
+.transition-logo-img {
+  height: auto;
+  width: 250px;
+  max-width: 80vw;
+}
+
+.transition-progress-bar {
+  width: 140px;
+  height: 4px;
+  background-color: #f1f5f9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.transition-progress-line {
+  height: 100%;
+  width: 50%;
+  background-color: var(--accent-orange);
+  border-radius: 4px;
+  animation: loading-line-anim 1.4s infinite ease-in-out;
+}
+
+@keyframes logo-entrance-pulse {
+  0% {
+    transform: scale(0.97);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(0.97);
+  }
+}
+
+@keyframes loading-line-anim {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
