@@ -50,6 +50,8 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   height: 100%;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -58,6 +60,7 @@ body {
   color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -1319,6 +1322,12 @@ header.scrolled .logo-img {
   
   .section {
     padding: var(--section-padding-mobile);
+    overflow-x: hidden;
+  }
+
+  .reveal-left,
+  .reveal-right {
+    transform: translateY(20px) !important;
   }
   
   .hero-grid {
@@ -1435,6 +1444,9 @@ header.scrolled .logo-img {
     gap: 20px !important;
     padding: 15px 10px 25px !important;
     scrollbar-width: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   .physio-grid.carousel-mobile::-webkit-scrollbar {
@@ -1465,6 +1477,8 @@ header.scrolled .logo-img {
 
   .physio-row-section {
     width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .physio-row-nav-wrapper {
