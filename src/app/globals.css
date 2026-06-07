@@ -263,6 +263,19 @@ a {
   transform: translateY(-2px);
 }
 
+.btn-outline-purple {
+  background-color: transparent;
+  color: var(--primary-purple);
+  border-color: var(--primary-purple);
+}
+
+.btn-outline-purple:hover {
+  background-color: var(--primary-purple);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(107, 47, 160, 0.3);
+}
+
 /* Ripple Effect Styling */
 .ripple {
   position: absolute;

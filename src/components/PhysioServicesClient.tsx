@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Reveal from '@/components/Reveal';
 
 interface PhysioCondition {
@@ -280,17 +281,26 @@ export default function PhysioServicesClient() {
                         {cond.svgIcon}
                       </div>
                     </div>
-                    <div className="physio-card-info" style={{ padding: '25px' }}>
-                      <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', color: 'var(--contrast-navy)' }}>
-                        <span className="lang-en" style={{ display: 'block', fontWeight: '700' }}>{cond.titleEn}</span>
-                        <span className="lang-ta" style={{ display: 'block', fontSize: '0.95rem', marginTop: '4px', color: 'var(--primary-purple)' }}>{cond.titleTa}</span>
-                      </h3>
-                      <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: 0, lineHeight: '1.5' }}>
-                        {cond.descriptionEn}
-                      </p>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--primary-teal)', fontWeight: '600', marginTop: '10px', marginBottom: 0, lineHeight: '1.5' }}>
-                        {cond.descriptionTa}
-                      </p>
+                    <div className="physio-card-info" style={{ padding: '25px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1 }}>
+                      <div>
+                        <h3 style={{ fontSize: '1.25rem', marginBottom: '12px', color: 'var(--contrast-navy)' }}>
+                          <span className="lang-en" style={{ display: 'block', fontWeight: '700' }}>{cond.titleEn}</span>
+                          <span className="lang-ta" style={{ display: 'block', fontSize: '0.95rem', marginTop: '4px', color: 'var(--primary-purple)' }}>{cond.titleTa}</span>
+                        </h3>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: 0, lineHeight: '1.5' }}>
+                          {cond.descriptionEn}
+                        </p>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--primary-teal)', fontWeight: '600', marginTop: '10px', marginBottom: 0, lineHeight: '1.5' }}>
+                          {cond.descriptionTa}
+                        </p>
+                      </div>
+                      <Link
+                        href={`/physio-services/${cond.id}`}
+                        className="btn btn-outline-purple"
+                        style={{ width: '100%', marginTop: '20px', display: 'inline-block', textAlign: 'center', fontSize: '0.85rem', padding: '10px 20px' }}
+                      >
+                        View Recovery Plan
+                      </Link>
                     </div>
                   </div>
                 </Reveal>
@@ -336,17 +346,26 @@ export default function PhysioServicesClient() {
                                 {cond.svgIcon}
                               </div>
                             </div>
-                            <div className="physio-card-info" style={{ padding: '20px' }}>
-                              <h3 style={{ fontSize: '1.15rem', marginBottom: '10px', color: 'var(--contrast-navy)' }}>
-                                <span className="lang-en" style={{ display: 'block', fontWeight: '700' }}>{cond.titleEn}</span>
-                                <span className="lang-ta" style={{ display: 'block', fontSize: '0.9rem', marginTop: '4px', color: 'var(--primary-purple)' }}>{cond.titleTa}</span>
-                              </h3>
-                              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: 0, lineHeight: '1.5' }}>
-                                {cond.descriptionEn}
-                              </p>
-                              <p style={{ fontSize: '0.8rem', color: 'var(--primary-teal)', fontWeight: '600', marginTop: '8px', marginBottom: 0, lineHeight: '1.5' }}>
-                                {cond.descriptionTa}
-                              </p>
+                            <div className="physio-card-info" style={{ padding: '20px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', flex: 1 }}>
+                              <div>
+                                <h3 style={{ fontSize: '1.15rem', marginBottom: '10px', color: 'var(--contrast-navy)' }}>
+                                  <span className="lang-en" style={{ display: 'block', fontWeight: '700' }}>{cond.titleEn}</span>
+                                  <span className="lang-ta" style={{ display: 'block', fontSize: '0.9rem', marginTop: '4px', color: 'var(--primary-purple)' }}>{cond.titleTa}</span>
+                                </h3>
+                                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: 0, lineHeight: '1.5' }}>
+                                  {cond.descriptionEn}
+                                </p>
+                                <p style={{ fontSize: '0.8rem', color: 'var(--primary-teal)', fontWeight: '600', marginTop: '8px', marginBottom: 0, lineHeight: '1.5' }}>
+                                  {cond.descriptionTa}
+                                </p>
+                              </div>
+                              <Link
+                                href={`/physio-services/${cond.id}`}
+                                className="btn btn-outline-purple"
+                                style={{ width: '100%', marginTop: '15px', display: 'inline-block', textAlign: 'center', fontSize: '0.8rem', padding: '8px 16px' }}
+                              >
+                                View Recovery Plan
+                              </Link>
                             </div>
                           </div>
                         </div>
