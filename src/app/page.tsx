@@ -286,79 +286,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Patient Reviews Section */}
+      {/* 5. Google Reviews Section */}
       <section className="section section-white">
         <div className="container">
-          <div className="text-center" style={{ marginBottom: '60px' }}>
-            <Reveal direction="up">
-              <h2>What Families Say About JSK</h2>
-            </Reveal>
-            <Reveal direction="up" delay={150}>
-              <p style={{ maxWidth: '600px', margin: '0 auto' }}>
-                Read reviews from parents and patients who have experienced life-changing rehab at JSK.
-              </p>
-            </Reveal>
-          </div>
-
-          <div className="grid-3">
-            <Reveal direction="up" delay={0}>
-              <div className="card" style={{ padding: '30px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <p style={{ fontStyle: 'italic', fontSize: '0.95rem', marginBottom: '20px' }}>
-                  &ldquo;We saw amazing improvement in our son's speech and behavior in just 6 months. The therapists at JSK are incredibly patient and skilled. Highly recommended clinic in Karaikudi!&rdquo;
-                </p>
-                <div>
-                  <div style={{ fontWeight: '700', color: 'var(--contrast-navy)' }}>S. Karthick</div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--primary-teal)' }}>Parent of 5yo child</div>
-                  <div style={{ color: 'var(--accent-orange)', marginTop: '5px' }}>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal direction="up" delay={150}>
-              <div className="card" style={{ padding: '30px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <p style={{ fontStyle: 'italic', fontSize: '0.95rem', marginBottom: '20px' }}>
-                  &ldquo;I was suffering from severe lower back pain for years. After taking 10 sessions of physiotherapy here, my pain is completely gone. Their Canadian spinal mobilization protocols did wonders.&rdquo;
-                </p>
-                <div>
-                  <div style={{ fontWeight: '700', color: 'var(--contrast-navy)' }}>M. Chidambaram</div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--primary-purple)' }}>Adult Physiotherapy Patient</div>
-                  <div style={{ color: 'var(--accent-orange)', marginTop: '5px' }}>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal direction="up" delay={300}>
-              <div className="card" style={{ padding: '30px', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <p style={{ fontStyle: 'italic', fontSize: '0.95rem', marginBottom: '20px' }}>
-                  &ldquo;The occupational therapy program at JSK transformed my daughter's motor skills. The clinic is neat, hygiene standards are top-notch, and the environment feels like a premium private center.&rdquo;
-                </p>
-                <div>
-                  <div style={{ fontWeight: '700', color: 'var(--contrast-navy)' }}>R. Priya</div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--primary-teal)' }}>Parent of 4yo child</div>
-                  <div style={{ color: 'var(--accent-orange)', marginTop: '5px' }}>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                    <i className="fas fa-star"></i>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-
           {/* Google Reviews CTA */}
           <Reveal direction="up" delay={200}>
             <div className="google-review-banner">
