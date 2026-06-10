@@ -151,7 +151,7 @@ export default function Contact() {
             {/* Form side */}
             <Reveal direction="left">
               <div className="contact-form-container">
-                <h3 style={{ marginBottom: '20px' }}>Clinical Intake & Appointment Request</h3>
+                <h3 style={{ marginBottom: '20px' }}>Client Intake & Appointment Request</h3>
                 
                 {submitted ? (
                   <div
@@ -360,7 +360,7 @@ export default function Contact() {
                     <i className="fas fa-clock"></i>
                   </div>
                   <div className="info-details">
-                    <h4>Clinical Timings</h4>
+                    <h4>Clinic Timings</h4>
                     <p>
                       Monday - Saturday: 9:00 AM - 8:00 PM
                       <br />

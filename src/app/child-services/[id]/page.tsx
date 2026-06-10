@@ -621,7 +621,7 @@ export default async function ServiceDetailsPage(props: PageProps) {
                     <i className="fas fa-file-medical" style={{ color: 'var(--accent-orange)', fontSize: '1.25rem' }}></i>
                     <div>
                       <div style={{ fontSize: '0.8rem', color: 'rgba(250,250,248,0.6)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Admission Process</div>
-                      <div style={{ fontSize: '0.95rem', fontWeight: '600' }}>Clinical Intake Assessment Required</div>
+                      <div style={{ fontSize: '0.95rem', fontWeight: '600' }}>Client Intake Assessment Required</div>
                     </div>
                   </div>
 

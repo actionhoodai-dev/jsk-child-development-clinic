@@ -141,7 +141,7 @@ export default function ChildServices() {
               Every pediatric program at JSK follows clinical guidelines modeled on leading Canadian child rehab centers. We integrate speech therapy, sensory integration, and behavioral therapy to give children a unified, comprehensive care program.
             </p>
             <Link href="/contact" className="btn btn-accent">
-              Schedule A Clinical Intake
+              Schedule A Client Intake
             </Link>
           </Reveal>
         </div>
