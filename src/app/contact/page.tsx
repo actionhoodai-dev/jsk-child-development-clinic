@@ -349,7 +349,7 @@ export default function Contact() {
                   <div className="info-details">
                     <h4>Email Inquiries</h4>
                     <p>
-                      <a href="mailto:jskrehabcenter@gmail.com">jskrehabcenter@gmail.com</a>
+                      <a href="mailto:jskrehab@gmail.com">jskrehab@gmail.com</a>
                     </p>
                   </div>
                 </div>

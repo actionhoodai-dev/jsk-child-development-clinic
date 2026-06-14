@@ -66,7 +66,7 @@ export default function Footer() {
             </p>
             <p>
               <i className="fas fa-envelope"></i>
-              <a href="mailto:jskrehabcenter@gmail.com">jskrehabcenter@gmail.com</a>
+              <a href="mailto:jskrehab@gmail.com">jskrehab@gmail.com</a>
             </p>
             <p>
               <i className="fas fa-clock"></i>
