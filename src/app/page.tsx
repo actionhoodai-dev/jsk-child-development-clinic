@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import StatCounter from '@/components/StatCounter';
+
 import Reveal from '@/components/Reveal';
 
 export default function Home() {
@@ -87,45 +87,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Clinic Stats Bar */}
-      <section className="stats-section section-teal text-center" style={{ padding: '50px 0', borderBottom: '5px solid var(--accent-orange)' }}>
-        <div className="container">
-          <div className="grid-4">
-            <Reveal direction="up" delay={0}>
-              <div style={{ padding: '10px' }}>
-                <StatCounter targetNumber={15} suffix="+ Years" />
-                <div style={{ fontWeight: '700', textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '0.5px', marginTop: '5px', color: '#ffffff' }}>
-                  Clinical Experience
-                </div>
-              </div>
-            </Reveal>
-            <Reveal direction="up" delay={100}>
-              <div style={{ padding: '10px' }}>
-                <StatCounter targetNumber={500} suffix="+" />
-                <div style={{ fontWeight: '700', textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '0.5px', marginTop: '5px', color: '#ffffff' }}>
-                  Happy Families Helped
-                </div>
-              </div>
-            </Reveal>
-            <Reveal direction="up" delay={200}>
-              <div style={{ padding: '10px' }}>
-                <StatCounter targetNumber={15} suffix="+" />
-                <div style={{ fontWeight: '700', textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '0.5px', marginTop: '5px', color: '#ffffff' }}>
-                  Specialist Therapists
-                </div>
-              </div>
-            </Reveal>
-            <Reveal direction="up" delay={300}>
-              <div style={{ padding: '10px' }}>
-                <StatCounter targetNumber={100} suffix="%" />
-                <div style={{ fontWeight: '700', textTransform: 'uppercase', fontSize: '0.85rem', letterSpacing: '0.5px', marginTop: '5px', color: '#ffffff' }}>
-                  Personalised Care Plans
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
 
       {/* 3. Core Specialties Overview */}
       <section className="section section-white">
